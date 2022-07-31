@@ -1,0 +1,36 @@
+{% extends "core/header.html" %}
+
+{% block content %}      
+
+<div class="text-center">
+  <form method="POST" class="form-signin">
+
+    {% csrf_token %}
+    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    {{ login_form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ login_form.username.errors }}
+        <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label>
+        <input type="username" name="{{ login_form.username.html_name }}" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+    </div>
+    <div class="fieldWrapper">
+        {{ login_form.password.errors }}
+        <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label>
+        <input type="password" name="{{ login_form.password.html_name }}" id="inputPassword" class="form-control" placeholder="Password" required>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
+
+  </form>
+</div>
+
+{% endblock %}

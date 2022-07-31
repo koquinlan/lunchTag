@@ -1,0 +1,40 @@
+{% extends "core/header.html" %}
+
+{% block content %}       
+
+<div class="text-center">
+	<form method="POST" class="form-signin">
+  
+		{% csrf_token %}
+		<img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+		<h1 class="h3 mb-3 font-weight-normal">Register</h1>
+  
+		{{ register_form.non_field_errors }}
+		<div class="fieldWrapper">
+			{{ register_form.username.errors }}
+			<label for="{{ form.username.id_for_label }}" class="sr-only">Username</label>
+			<input type="username" name="{{ register_form.username.html_name }}" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.email.errors }}
+			<label for="{{ form.email.id_for_label }}" class="sr-only">Email</label>
+			<input type="email" name="{{ register_form.email.html_name }}" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.password1.errors }}
+			<label for="{{ form.password1.id_for_label }}" class="sr-only">password1</label>
+			<input type="password" name="{{ register_form.password1.html_name }}" id="password1" class="form-control" placeholder="Password" required>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.password2.errors }}
+			<label for="{{ form.password2.id_for_label }}" class="sr-only">password2</label>
+			<input type="password" name="{{ register_form.password2.html_name }}" id="password2" class="form-control" placeholder="Confirm Password" required>
+		</div>
+  
+	  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+	  <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+  
+	</form>
+</div>
+
+{% endblock %}
