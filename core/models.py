@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
-    #image = CloudinaryField('image', overwrite=True)
+    image = CloudinaryField('image', overwrite=True, null=True)
 
     active = models.BooleanField(default = True)
     pronouns = models.CharField(max_length = 20, null=True, blank=True, default = 'pronouns')
