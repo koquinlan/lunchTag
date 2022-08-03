@@ -128,12 +128,13 @@ def edit_account_request(request):
 def edit_profile_request(request):
 	profile = Profile.objects.get(user=request.user)
 	if request.method == 'POST':
-		profile_form = UpdateProfileForm(request.POST, instance=profile)
+		profile_form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
 
 		if profile_form.is_valid():
 			profile_form.save()
 			messages.success(request, 'Your profile is updated successfully')
 			return redirect(to='core:account')
+		messages.error(request, 'Your profile failed to update')
 	else:
 		profile_form = UpdateProfileForm(instance=profile)
 

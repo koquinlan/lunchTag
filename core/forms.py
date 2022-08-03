@@ -36,14 +36,7 @@ class UpdateProfileForm(forms.ModelForm):
 	# avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
 	pronouns = forms.CharField(max_length=100, required=False)
 	phone = forms.CharField(max_length=100, required=False)
-	image = CloudinaryFileField(
-			options={
-				'folder' : 'media/photos/',
-				'crop': 'thumb',
-				'width': 150,
-				'height': 150,
-				}
-			)
+	image = forms.ImageField(label='', required=False, widget=forms.FileInput)
 
 	class Meta:
 		model = Profile
