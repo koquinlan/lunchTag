@@ -1,15 +1,26 @@
+from django import forms
 from django.http import HttpResponse
+
 from django.shortcuts import  render, redirect
-from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+
 from django.db import IntegrityError
+
 from core.utils import populate_edges, make_pairings, push_pairings
 from core.models import Profile, Pairing, Edge
+
+from .forms import NewUserForm
 from django.contrib.auth.models import User
+
 from django.contrib.auth.decorators import login_required, user_passes_test  
 from core.forms import UpdateUserForm, UpdateProfileForm
+
+from cloudinary.forms import cl_init_js_callbacks 
+from cloudinary import CloudinaryImage     
+
+
 
 def homepage(request):
 	if request.user.is_authenticated:
@@ -46,7 +57,8 @@ def register_request(request):
 
 			newUser = authenticate(username=email, password=password)
 
-			Profile.objects.create(user=newUser)
+			profile = Profile.objects.create(user=newUser)
+			profile.avatar = CloudinaryImage("default.jpg").image()
 			populate_edges(newUser)
 			login(request, newUser)
 			messages.success(request, f"Registration successful, You are now logged in as {newUser.first_name} {newUser.last_name}.")

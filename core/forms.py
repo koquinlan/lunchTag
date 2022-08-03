@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from core.models import Profile
+from cloudinary.forms import CloudinaryFileField
 
 
 # Create your forms here.
@@ -35,8 +36,16 @@ class UpdateProfileForm(forms.ModelForm):
 	# avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
 	pronouns = forms.CharField(max_length=100, required=False)
 	phone = forms.CharField(max_length=100, required=False)
-
+	image = CloudinaryFileField(
+			options={
+				'folder' : 'media/photos/',
+				'crop': 'thumb',
+				'width': 150,
+				'height': 150,
+				}
+			)
 
 	class Meta:
 		model = Profile
-		fields = ['pronouns', 'phone']
+		fields = ['pronouns', 'phone', 'image']
+		
