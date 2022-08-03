@@ -19,6 +19,7 @@ from core.forms import UpdateUserForm, UpdateProfileForm
 
 from cloudinary.forms import cl_init_js_callbacks 
 from cloudinary import CloudinaryImage     
+from cloudinary.models import CloudinaryField
 
 
 
@@ -57,8 +58,7 @@ def register_request(request):
 
 			newUser = authenticate(username=email, password=password)
 
-			profile = Profile.objects.create(user=newUser)
-			profile.avatar = CloudinaryImage("default.jpg").image()
+			Profile.objects.create(user=newUser)
 			populate_edges(newUser)
 			login(request, newUser)
 			messages.success(request, f"Registration successful, You are now logged in as {newUser.first_name} {newUser.last_name}.")
