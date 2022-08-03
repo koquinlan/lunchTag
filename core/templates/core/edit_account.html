@@ -1,0 +1,137 @@
+{% extends "core/header.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="main-body">
+<div class="row gutters-sm">
+	<div class="col-md-4 mb-3">
+		<div class="card">
+		<div class="card-body">
+			<div class="d-flex flex-column align-items-center text-center">
+			<img src="{{ user_profile.avatar.url }}" alt="Admin" class="rounded-circle" width="150">
+			<div class="mt-3">
+				<h4>{{ user.first_name }} {{ user.last_name }}</h4>
+				<p class="text-secondary mb-1">He/Him</p>
+				<p class="text-muted font-size-sm">(720) 724-0751</p>
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+		
+	<div class="col-md-8">
+		<form method="POST" class="form-edit">
+			{% csrf_token %}
+			<div class="card mb-3">
+			<div class="card-body">
+				<div class="row">
+				<div class="col-sm-3">
+					<h6 class="mb-0">First Name</h6>
+				</div>
+				<div class="col-sm-9 text-secondary">
+					<div class="fieldWrapper">
+						<label for="{{ form.first_name.id_for_label }}" class="sr-only">First Name</label>
+						<input type="name" name="{{ user_form.first_name.html_name }}" id="inputFirstName" class="form-control" value="{{ user.first_name }}" required autofocus>
+					</div>
+				</div>
+				</div>
+				<hr>
+
+				<div class="row">
+				<div class="col-sm-3">
+					<h6 class="mb-0">Last Name</h6>
+				</div>
+				<div class="col-sm-9 text-secondary">
+					<div class="fieldWrapper">
+						<label for="{{ form.last_name.id_for_label }}" class="sr-only">Last name</label>
+						<input type="name" name="{{ user_form.last_name.html_name }}" id="inputLastName" class="form-control" value="{{ user.last_name }}" required autofocus>
+					</div>
+				</div>
+				</div>
+				<hr>
+
+				<div class="row">
+				<div class="col-sm-3">
+					<h6 class="mb-0">Email</h6>
+				</div>
+				<div class="col-sm-9 text-secondary">
+					<div class="fieldWrapper">
+						{{ user_form.email.errors }}
+						<label for="{{ form.email.id_for_label }}" class="sr-only">Email</label>
+						<input type="email" name="{{ user_form.email.html_name }}" id="inputEmail" class="form-control" value="{{ user.email }}" required autofocus>
+					</div>
+				</div>
+				</div>
+				<hr>
+
+				<div class="row">
+				<div class="col-sm-12">
+					<button class="btn btn-info" type="submit">Save</button>
+				</div>
+				</div>
+			</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-md-6">
+        <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 class="mb-0">Secret Crush</h4>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                    <p class="mb-0 float-right"><small>(select up to 1)</small></p>
+                </div>
+            </div>
+            <hr>
+
+            {% if user_profile.crush != none %}
+            <div class="row">
+                <div class="col-sm-10">
+                    <h6 class="mb-3">{{user_profile.crush.first_name}} {{user_profile.crush.last_name}}</h6>
+                </div>
+            </div>
+            {% endif %}
+            
+        </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 class="mb-0">Strikes</h4>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                    <p class="mb-0 float-right"><small>(visible only to you)</small></p>
+                </div>
+            </div>
+            <hr>
+            
+            {% for user in userstrikes %}
+            <div class="row">
+                <div class="col-sm-10">
+                    <h6 class="mb-3">{{user.first_name}} {{user.last_name}}</h6>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+{% endblock %}

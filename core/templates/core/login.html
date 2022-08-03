@@ -1,19 +1,19 @@
 {% extends "core/header.html" %}
-
+{% load static %}
 {% block content %}      
 
 <div class="text-center">
   <form method="POST" class="form-signin">
 
     {% csrf_token %}
-    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <img class="mb-4" src="{% static 'bulldog.png' %}" alt="" width="100" height="100">
     <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
     {{ login_form.non_field_errors }}
     <div class="fieldWrapper">
         {{ login_form.username.errors }}
-        <label for="{{ form.username.id_for_label }}" class="sr-only">Username</label>
-        <input type="username" name="{{ login_form.username.html_name }}" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+        <label for="{{ form.username.id_for_label }}" class="sr-only">Email</label>
+        <input type="username" name="{{ login_form.username.html_name }}" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
     </div>
     <div class="fieldWrapper">
         {{ login_form.password.errors }}

@@ -1,0 +1,48 @@
+{% extends "core/header.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="main-body">
+<div class="row gutters-sm">
+    
+    <div class="col-md-12">
+        <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <h4 class="mb-0">Current Pairings</h4>
+            </div>
+            <hr>
+
+            {% for pair in allpairings %}
+            <div class="row">
+                <div class="col-sm-10">
+                    {% if pair.user3 is not none %}
+                    <h6 class="mt-3">{{ pair.user1.first_name }} {{ pair.user1.last_name }}        <small>paired with</small>      {{ pair.user2.first_name }} {{ pair.user2.last_name }}       <small>paired with</small>      {{ pair.user3.first_name }} {{ pair.user3.last_name }}</h6>
+                    {% else %}
+                    <h6 class="mt-3">{{ pair.user1.first_name }} {{ pair.user1.last_name }}        <small>paired with</small>      {{ pair.user2.first_name }} {{ pair.user2.last_name }}</h6>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            
+            <div class="row">
+                <div class="col-sm-6">
+                <a class="btn btn-outline-primary mt-4" href="edit_pairings/create_new">Create New Pairings</a>
+                </div>
+                <div class="col-sm-6">
+                    <a class="btn btn-outline-primary mt-4 float-right" href="edit_pairings/push">Push Pairings</a>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -7,6 +7,7 @@ __pycache__
 .env
 myvenv/
 venv/
+.lunchTagEnv
 
 # Database
 db.sqlite3
@@ -27,3 +28,6 @@ $RECYCLE.BIN/
 .vscode/
 .history/
 *.code-workspace
+
+#Local Settings
+local_settings.py

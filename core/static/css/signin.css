@@ -52,7 +52,7 @@
   border-top-right-radius: 0;
 }
 
-.form-signin input[type="email"] {
+.form-signin input[type="name"] {
   margin-bottom: -1px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;

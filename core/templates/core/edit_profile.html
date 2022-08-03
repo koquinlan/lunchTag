@@ -1,0 +1,141 @@
+{% extends "core/header.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="main-body">
+<div class="row gutters-sm">
+
+    <div class="col-md-4 mb-3">
+        <form method="POST" class="form-edit">
+            {% csrf_token %}
+            <div class="card text-center align-items-center">
+            <div class="card-body">
+            <div class="d-flex flex-column">
+                <img src="{{ user_profile.avatar.url }}" alt="Admin" class="rounded-circle" width="150">
+                <div class="mt-3">
+                    <h4 class="mb-3">{{ user.first_name }} {{ user.last_name }}</h4>
+                    <div class="row mb-2">
+                        <div class="fieldWrapper">
+                            <label for="{{ profile_form.pronouns.id_for_label }}" class="sr-only">Pronouns</label>
+                            <input type="foo" name="{{ profile_form.pronouns.html_name }}" id="inputPronouns" class="form-control" value="{{ user_profile.pronouns }}" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="fieldWrapper">
+                            <label for="{{ profile_form.phone.id_for_label }}" class="sr-only">Phone Number</label>
+                            <input type="foo" name="{{ profile_form.phone.html_name }}" id="inputPhone" class="form-control" value="{{ user_profile.phone }}" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-info" type="submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">First Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ user.first_name }}
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <h6 class="mb-0">Last Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    {{ user.last_name }}
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+            <div class="col-sm-3">
+                <h6 class="mb-0">Email</h6>
+            </div>
+            <div class="col-sm-9 text-secondary">
+                {{ user.email }}
+            </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    
+	<div class="col-md-6">
+        <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 class="mb-0">Secret Crush</h4>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                    <p class="mb-0 float-right"><small>(select up to 1)</small></p>
+                </div>
+            </div>
+            <hr>
+
+            {% if user_profile.crush != none %}
+            <div class="row">
+                <div class="col-sm-10">
+                    <h6 class="mb-3">{{user_profile.crush.first_name}} {{user_profile.crush.last_name}}</h6>
+                </div>
+            </div>
+            {% endif %}
+            
+        </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h4 class="mb-0">Strikes</h4>
+                </div>
+                <div class="col-sm-6 text-secondary">
+                    <p class="mb-0 float-right"><small>(visible only to you)</small></p>
+                </div>
+            </div>
+            <hr>
+            
+            {% for user in userstrikes %}
+            <div class="row">
+                <div class="col-sm-10">
+                    <h6 class="mb-3">{{user.first_name}} {{user.last_name}}</h6>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+{% endblock %}
