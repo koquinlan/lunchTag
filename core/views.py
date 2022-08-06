@@ -147,7 +147,7 @@ def remove_avatar_request(request):
 	if profile.image != None:
 		profile.image = None
 
-	return redirect(reverse('core:account/edit_profile'))
+	return redirect('core:account')
 
 
 @login_required
