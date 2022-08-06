@@ -46,10 +46,6 @@ class UpdateProfileForm(forms.ModelForm):
 	def save(self, commit=True):
 		instance = super(UpdateProfileForm, self).save(commit=False)
 		if self.cleaned_data.get('remove_photo'):
-			try:
-				os.unlink(instance.photo.path)
-			except OSError:
-				pass
 			instance.photo = None
 		if commit:
 			instance.save()
