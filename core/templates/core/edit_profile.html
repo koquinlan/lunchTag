@@ -19,16 +19,26 @@
                 {% csrf_token %}
                 <div class="col-md-12 align-items-center text-center">
                     {% if user_profile.image is not None %}
-                        <img src="{{ user_profile.image.url }}" alt="Admin" class="rounded-circle" width="150">
-                        <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
-                            Change<input type="file" style="display: none;" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
-                        </label>
-                        <a class="btn btn-outline-danger btn-sm" href="edit_profile/remove_avatar">Remove</a>
+                        <div class="row">
+                            <img src="{{ user_profile.image.url }}" alt="Admin" class="rounded-circle" width="150">
+                        </div>
+                        <div class="row">
+                            <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
+                                Change<input type="file" style="display: none" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
+                            </label>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-outline-danger btn-sm" href="edit_profile/remove_avatar">Remove</a>
+                        </div>
                     {% else %}
-                        <img src="{% static 'default.png' %}" alt="Admin" class="rounded-circle" width="150">
-                        <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
-                            Upload<input type="file" style="display: none;" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
-                        </label>
+                        <div class="row">
+                            <img src="{% static 'default.png' %}" alt="Admin" class="rounded-circle" width="150">
+                        </div>
+                        <div class="row">
+                            <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
+                                Upload<input type="file" style="display: none" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
+                            </label>
+                        </div>
                     {% endif %}
                 </div>
 
