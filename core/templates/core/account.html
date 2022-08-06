@@ -104,9 +104,15 @@
             {% endif %}
 
             <div class="dropdown">
+                {% if user_profile.crush != none %}
+                <button class="btn btn-secondary dropdown-toggle mt-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Change Crush
+                </button>
+                {% else %}
                 <button class="btn btn-secondary dropdown-toggle mt-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Add Crush
                 </button>
+                {% endif %}
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {% for user in allusers %}
                     {% if not user.is_superuser %}

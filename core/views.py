@@ -68,7 +68,7 @@ def register_request(request):
 		messages.error(request, "Unsuccessful registration. Invalid information.")  
 
 	form = NewUserForm()
-	return render (request=request, template_name="core/register.html", context={"register_form":form})
+	return render(request=request, template_name="core/register.html", context={"register_form":form})
 
 
 
@@ -106,7 +106,7 @@ def logout_request(request):
 @login_required
 def account_request(request):
 	profile = Profile.objects.get(user=request.user)
-	return render(request, "core/account.html", {'user_profile': profile, 'allusers': User.objects.all(), 'userstrikes': profile.strikes.all()})
+	return render(request, "core/account.html", {'user_profile': profile, 'allusers': User.objects.order_by('first_name'), 'userstrikes': profile.strikes.order_by('first_name')})
 
 @login_required
 def edit_account_request(request):
@@ -121,7 +121,7 @@ def edit_account_request(request):
 	else:
 		user_form = UpdateUserForm(instance=request.user)
 
-	return render(request, 'core/edit_account.html', {'user_form': user_form, 'user_profile': profile, 'userstrikes': profile.strikes.all()})
+	return render(request, 'core/edit_account.html', {'user_form': user_form, 'user_profile': profile, 'userstrikes': profile.strikes.order_by('first_name')})
 
 
 @login_required
@@ -138,7 +138,7 @@ def edit_profile_request(request):
 	else:
 		profile_form = UpdateProfileForm(instance=profile)
 
-	return render(request, 'core/edit_profile.html', {'profile_form': profile_form, 'user_profile': profile, 'userstrikes': profile.strikes.all()})
+	return render(request, 'core/edit_profile.html', {'profile_form': profile_form, 'user_profile': profile, 'userstrikes': profile.strikes.order_by('first_name')})
 
 
 @login_required
@@ -171,7 +171,18 @@ def crush_request(request, userID):
 	req_user = request.user
 	req_profile = Profile.objects.get(user=req_user)
 	crush_user = User.objects.get(id=userID)
+	old_crush = req_profile.crush
 
+	# need to fix the weight of the old crush here
+	if old_crush != None:
+		for edge in req_user.user1.filter(user2=old_crush):
+			edge.weight = edge.weight/2
+			edge.save()
+		for edge in req_user.user2.filter(user2=old_crush):
+			edge.weight = edge.weight/2
+			edge.save()
+
+	# now set the new crush and double that edge's weight
 	req_profile.crush = crush_user
 	req_profile.save()
 		
@@ -248,7 +259,7 @@ def toggle_active_request(request):
 	if profile.active:
 		messages.success(request, 'You have opted back in and will be included in the next pairing!')
 	else:
-		messages.warning(request, 'You have opted out and will NOT be included in the next pairing!')
+		messages.warning(request, 'You have opted out and will NOT be included until you opt back in!')
 	return redirect(to='core:account')
 
 

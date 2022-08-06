@@ -15,7 +15,7 @@ class Profile(models.Model):
 
     active = models.BooleanField(default = True)
     pronouns = models.CharField(max_length = 20, null=True, blank=True, default = 'pronouns')
-    phone = models.CharField(max_length = 20, null=True, blank=True, default='(xxx) xxx-xxxx')
+    phone = models.CharField(max_length = 20, null=True, blank=True, default='(xxx) xxx-xxxx\n(or easiest contact)')
 
     strikes = models.ManyToManyField(User, related_name='strikes')
     crush = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='crush', null=True, blank=True, default=None)

@@ -23,6 +23,7 @@
                 <img src="{% static 'default.png' %}" alt="Admin" class="rounded-circle" width="150">
                 {% endif %}
                 {{ profile_form.image }}
+                {{ profile_form.remove_photo }}
                 <div class="mt-3">
                     <h4 class="mb-3">{{ user.first_name }} {{ user.last_name }}</h4>
                     <div class="row mb-2">
@@ -34,7 +35,7 @@
 
                     <div class="row mb-2">
                         <div class="fieldWrapper">
-                            <label for="{{ profile_form.phone.id_for_label }}" class="sr-only">Phone Number</label>
+                            <label for="{{ profile_form.phone.id_for_label }}" class="sr-only">Phone Number (or easiest contact)</label>
                             <input type="foo" name="{{ profile_form.phone.html_name }}" id="inputPhone" class="form-control" value="{{ user_profile.phone }}" required autofocus>
                         </div>
                     </div>
