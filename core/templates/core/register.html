@@ -15,7 +15,7 @@
 		<div class="fieldWrapper">
 			{{ register_form.username.errors }}
 			<label for="{{ form.username.id_for_label }}" class="sr-only">Email</label>
-			<input type="username" name="{{ register_form.username.html_name }}" id="inputUsername" class="form-control" placeholder="Email" required autofocus>
+			<input type="email" name="{{ register_form.username.html_name }}" id="inputUsername" class="form-control" placeholder="Email" required autofocus>
 		</div>
 		<div class="fieldWrapper">
 			{{ register_form.first_name.errors }}
@@ -30,7 +30,7 @@
 		<div class="fieldWrapper">
 			{{ register_form.password1.errors }}
 			<label for="{{ form.password1.id_for_label }}" class="sr-only">password1</label>
-			<input type="password" name="{{ register_form.password1.html_name }}" id="password1" class="form-control" placeholder="Password" required>
+			<input type="password" name="{{ register_form.password1.html_name }}" id="password1" class="form-control" placeholder="Password (at least 8 characters)" required>
 		</div>
 		<div class="fieldWrapper">
 			{{ register_form.password2.errors }}

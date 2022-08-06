@@ -48,7 +48,7 @@ def homepage(request):
 	
 def help_request(request):
 	return render(request=request, template_name='core/help.html')
-	
+
 
 def register_request(request):
 	if request.method == "POST":
@@ -73,7 +73,7 @@ def register_request(request):
 
 			return redirect("core:homepage")
 
-		messages.error(request, "Unsuccessful registration. Invalid information.")  
+		messages.error(request, "Unsuccessful registration. Invalid information, likely an invalid password. Password must be at least 8 characters, contain at least 1 letter, and not be extremely common (ie. password123) or too similar to your name/email!")  
 
 	form = NewUserForm()
 	return render(request=request, template_name="core/register.html", context={"register_form":form})
