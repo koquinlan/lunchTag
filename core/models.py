@@ -7,6 +7,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
 
     image = CloudinaryField("avatar",
+        overwrite = True,
         blank = True, null=True,
         folder = "avatars/",
         resource_type = "image",

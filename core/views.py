@@ -21,6 +21,10 @@ from core.forms import UpdateUserForm, UpdateProfileForm
 from cloudinary.forms import cl_init_js_callbacks 
 from cloudinary import CloudinaryImage     
 from cloudinary.models import CloudinaryField
+import cloudinary.uploader
+import cloudinary
+
+
 
 
 
@@ -145,7 +149,9 @@ def edit_profile_request(request):
 def remove_avatar_request(request):
 	profile = Profile.objects.get(user=request.user)
 	if profile.image != None:
+		cloudinary.uploader.destroy(profile.image.public_id, invalidate=True)
 		profile.image = None
+		profile.save()
 
 	return redirect('core:account')
 

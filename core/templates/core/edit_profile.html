@@ -19,7 +19,7 @@
             <div class="d-flex flex-column">
                 {% if user_profile.image is not None %}
                 <img src="{{ user_profile.image.url }}" alt="Admin" class="rounded-circle" width="150">
-                <a class="btn btn-outline-danger btn-sm" href="account/edit_profile/remove_avatar">Remove</a>
+                <a class="btn btn-outline-danger btn-sm" href="edit_profile/remove_avatar">Remove</a>
                 {% else %}
                 <img src="{% static 'default.png' %}" alt="Admin" class="rounded-circle" width="150">
                 {% endif %}
