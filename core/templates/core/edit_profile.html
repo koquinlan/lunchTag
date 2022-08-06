@@ -12,12 +12,12 @@
 <div class="row gutters-sm">
 
     <div class="col-md-4 mb-3">
-        <form method="POST" class="form-edit" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="card">
+            <div class="card align-items-center text-center">
             <div class="card-body">
             <div class="d-flex flex-column">
-                <div class="col-md-4 align-items-center text-center">
+                <form method="POST" class="form-edit" enctype="multipart/form-data"></form>
+                {% csrf_token %}
+                <div class="col-md-12 align-items-center text-center">
                     {% if user_profile.image is not None %}
                         <img src="{{ user_profile.image.url }}" alt="Admin" class="rounded-circle" width="150">
                         <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
@@ -30,36 +30,36 @@
                             Upload<input type="file" style="display: none;" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
                         </label>
                     {% endif %}
+                </div>
 
                     
-                    {{ profile_form.image }}
-                    <div class="mt-3">
-                        <h4 class="mb-3">{{ user.first_name }} {{ user.last_name }}</h4>
-                        <div class="row mb-2">
-                            <div class="fieldWrapper">
-                                <label for="{{ profile_form.pronouns.id_for_label }}" class="sr-only">Pronouns</label>
-                                <input type="foo" name="{{ profile_form.pronouns.html_name }}" id="inputPronouns" class="form-control" value="{{ user_profile.pronouns }}">
-                            </div>
+                {{ profile_form.image }}
+                <div class="mt-3">
+                    <h4 class="mb-3">{{ user.first_name }} {{ user.last_name }}</h4>
+                    <div class="row mb-2">
+                        <div class="fieldWrapper">
+                            <label for="{{ profile_form.pronouns.id_for_label }}" class="sr-only">Pronouns</label>
+                            <input type="foo" name="{{ profile_form.pronouns.html_name }}" id="inputPronouns" class="form-control" value="{{ user_profile.pronouns }}">
                         </div>
+                    </div>
 
-                        <div class="row mb-2">
-                            <div class="fieldWrapper">
-                                <label for="{{ profile_form.phone.id_for_label }}" class="sr-only">Phone Number (or easiest contact)</label>
-                                <input type="foo" name="{{ profile_form.phone.html_name }}" id="inputPhone" class="form-control" value="{{ user_profile.phone }}">
-                            </div>
+                    <div class="row mb-2">
+                        <div class="fieldWrapper">
+                            <label for="{{ profile_form.phone.id_for_label }}" class="sr-only">Phone Number (or easiest contact)</label>
+                            <input type="foo" name="{{ profile_form.phone.html_name }}" id="inputPhone" class="form-control" value="{{ user_profile.phone }}">
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <button class="btn btn-info" type="submit">Save</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-info" type="submit">Save</button>
                         </div>
                     </div>
                 </div>
+            </form>
             </div>
             </div>
             </div>
-        </form>
     </div>
 
     <div class="col-md-8">

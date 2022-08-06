@@ -12,7 +12,7 @@ class Profile(models.Model):
         folder = "avatars/",
         resource_type = "image",
         transformation=[{'width': 150, 'height': 150, 'gravity': "center", 'crop': "thumb"},]
-        )
+    )
 
     active = models.BooleanField(default = True)
     pronouns = models.CharField(max_length = 20, null=True, blank=True, default = 'pronouns')
