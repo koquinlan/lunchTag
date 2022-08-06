@@ -45,7 +45,10 @@ def homepage(request):
 		return render(request=request, template_name='core/userhome.html', context={"pairing":profile.tag_pairing, "pair_profile":pair_profile, "pairing2":profile.tag_pairing2, "pair_profile2":pair_profile2})
 	return render(request=request, template_name='core/home.html')
 
-
+	
+def help_request(request):
+	return render(request=request, template_name='core/help.html')
+	
 
 def register_request(request):
 	if request.method == "POST":
