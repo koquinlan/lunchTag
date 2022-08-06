@@ -37,17 +37,7 @@ class UpdateProfileForm(forms.ModelForm):
 	pronouns = forms.CharField(max_length=100, required=False)
 	phone = forms.CharField(max_length=100, required=False)
 	image = forms.ImageField(label='', required=False, widget=forms.FileInput)
-	remove_photo = forms.BooleanField(required=False)
 
 	class Meta:
 		model = Profile
 		fields = ['pronouns', 'phone', 'image', 'remove_photo']
-
-	def save(self, commit=True):
-		instance = super(UpdateProfileForm, self).save(commit=False)
-		if self.cleaned_data.get('remove_photo'):
-			instance.photo = None
-		if commit:
-			instance.save()
-		return instance
-		

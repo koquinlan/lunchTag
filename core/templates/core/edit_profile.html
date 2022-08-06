@@ -21,9 +21,9 @@
                 <img src="{{ user_profile.image.url }}" alt="Admin" class="rounded-circle" width="150">
                 {% else %}
                 <img src="{% static 'default.png' %}" alt="Admin" class="rounded-circle" width="150">
+                <a class="btn btn-outline-danger btn-sm" href="account/edit_profile/remove_avatar">Remove</a>
                 {% endif %}
                 {{ profile_form.image }}
-                {{ profile_form.remove_photo }}
                 <div class="mt-3">
                     <h4 class="mb-3">{{ user.first_name }} {{ user.last_name }}</h4>
                     <div class="row mb-2">

@@ -16,6 +16,7 @@ urlpatterns = [
     path("account", views.account_request, name="account"),
     path("account/edit", views.edit_account_request, name="edit_account"),
     path("account/edit_profile", views.edit_profile_request, name="edit_profile"),
+    path("account/edit_profile/remove_avatar", views.remove_avatar_request, name="remove_avatar"),
 
     path("account/strike/<int:userID>", views.strike_request, name="request strike"),
     path("account/remove_strike/<int:userID>", views.remove_strike_request, name="remove strike"),

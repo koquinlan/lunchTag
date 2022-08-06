@@ -140,6 +140,14 @@ def edit_profile_request(request):
 
 	return render(request, 'core/edit_profile.html', {'profile_form': profile_form, 'user_profile': profile, 'userstrikes': profile.strikes.order_by('first_name')})
 
+@login_required
+def remove_avatar_request(request):
+	profile = Profile.objects.get(user=request.user)
+	if profile.image != None:
+		profile.image = None
+
+	return redirect(to='core:account/edit_profile')
+
 
 @login_required
 def strike_request(request, userID):
