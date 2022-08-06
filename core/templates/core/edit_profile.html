@@ -22,12 +22,12 @@
                         <div class="row">
                             <img src="{{ user_profile.image.url }}" alt="Admin" class="rounded-circle" width="150">
                         </div>
-                        <div class="row">
+                        <div class="row align-items-center">
                             <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
-                                Change<input type="file" style="display: none" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
+                                <small>Change Profile Picture</small><input type="file" style="display: none" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
                             </label>
                         </div>
-                        <div class="row">
+                        <div class="row align-items-center">
                             <a class="btn btn-outline-danger btn-sm" href="edit_profile/remove_avatar">Remove</a>
                         </div>
                     {% else %}
@@ -35,8 +35,8 @@
                             <img src="{% static 'default.png' %}" alt="Admin" class="rounded-circle" width="150">
                         </div>
                         <div class="row">
-                            <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-primary">
-                                Upload<input type="file" style="display: none" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
+                            <label for="{{ profile_form.image.id_for_label }}" class="btn btn-outline-success">
+                                <small>Upload Profile Picture</small><input type="file" style="display: none" name="{{ profile_form.image.html_name }}" accept="image/*" id="id_image">
                             </label>
                         </div> 
                     {% endif %}
