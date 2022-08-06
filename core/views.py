@@ -1,5 +1,6 @@
 from django import forms
 from django.http import HttpResponse
+from django.urls import reverse
 
 from django.shortcuts import  render, redirect
 from django.contrib.auth import login, authenticate, logout
@@ -146,7 +147,7 @@ def remove_avatar_request(request):
 	if profile.image != None:
 		profile.image = None
 
-	return redirect(to='core:account/edit_profile')
+	return redirect(reverse('core:account/edit_profile'))
 
 
 @login_required
