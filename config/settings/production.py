@@ -20,7 +20,7 @@ DATABASES = {
     }
 }
 
-STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # one month
 
