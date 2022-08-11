@@ -1,0 +1,47 @@
+{% extends "core/header.html" %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}       
+
+<div class="text-center">
+	<form method="POST" class="form-signin">
+  
+		{% csrf_token %}
+		<img class="mb-4" src="{% static 'bulldog.png' %}" alt="" width="100" height="100">
+		<h1 class="h3 mb-3 font-weight-normal">Register</h1>
+  
+		{{ register_form.non_field_errors }}
+		<div class="fieldWrapper">
+			{{ register_form.username.errors }}
+			<label for="{{ form.username.id_for_label }}" class="sr-only">Email</label>
+			<input type="email" name="{{ register_form.username.html_name }}" id="inputUsername" class="form-control" placeholder="Email" required autofocus>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.first_name.errors }}
+			<label for="{{ form.first_name.id_for_label }}" class="sr-only">First Name</label>
+			<input type="name" name="{{ register_form.first_name.html_name }}" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.last_name.errors }}
+			<label for="{{ form.last_name.id_for_label }}" class="sr-only">Last Name</label>
+			<input type="name" name="{{ register_form.last_name.html_name }}" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.password1.errors }}
+			<label for="{{ form.password1.id_for_label }}" class="sr-only">password1</label>
+			<input type="password" name="{{ register_form.password1.html_name }}" id="password1" class="form-control" placeholder="Password (at least 8 characters)" required>
+		</div>
+		<div class="fieldWrapper">
+			{{ register_form.password2.errors }}
+			<label for="{{ form.password2.id_for_label }}" class="sr-only">password2</label>
+			<input type="password" name="{{ register_form.password2.html_name }}" id="password2" class="form-control" placeholder="Confirm Password" required>
+		</div>
+  
+	  <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+	  <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+  
+	</form>
+</div>
+
+{% endblock %}
