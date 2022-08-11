@@ -1,1 +1,1 @@
-web: gunicorn lunchTag.wsgi --log-file -
+web: gunicorn config.wsgi --env DJANGO_SETTINGS_MODULE=config.settings.production --log-file -

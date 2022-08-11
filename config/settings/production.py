@@ -29,7 +29,7 @@ DATABASES["default"].update(db_from_env)
 
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": "hyyxwq1o9",
-    "API_KEY": "813484424922841",
-    "API_SECRET": "oIzzXT3xoBhmpidrE3IR-pvz6QY",
+    "API_KEY": get_env_variable("API_KEY"),
+    "API_SECRET": get_env_variable("API_SECRET"),
 }
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
