@@ -6,7 +6,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1", ".herokuapp.com"]
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -21,6 +20,7 @@ DATABASES = {
     }
 }
 
+STATICFILES_STORAGE = "whitenoise.django.GzipManifestStaticFilesStorage"
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30  # one month
 

@@ -103,8 +103,7 @@ TEMPLATES = [
 STATICFILES_DIRS = [
     BASE_DIR / "lunchTag/static",
 ]
-
-STATIC_ROOT = BASE_DIR / "lunchTag/static/collected"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = BASE_DIR / "lunchTag/media"
 
 
