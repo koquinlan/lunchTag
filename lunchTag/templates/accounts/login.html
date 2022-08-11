@@ -1,6 +1,6 @@
-{% extends "core/header.html" %}
+{% extends "header.html" %}
 {% load static %}
-{% block content %}      
+{% block content %}
 {% load cloudinary %}
 
 <div class="text-center">
@@ -12,14 +12,16 @@
 
     {{ login_form.non_field_errors }}
     <div class="fieldWrapper">
-        {{ login_form.username.errors }}
-        <label for="{{ form.username.id_for_label }}" class="sr-only">Email</label>
-        <input type="username" name="{{ login_form.username.html_name }}" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      {{ login_form.username.errors }}
+      <label for="{{ form.username.id_for_label }}" class="sr-only">Email</label>
+      <input type="username" name="{{ login_form.username.html_name }}" id="inputEmail" class="form-control"
+        placeholder="Email" required autofocus>
     </div>
     <div class="fieldWrapper">
-        {{ login_form.password.errors }}
-        <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label>
-        <input type="password" name="{{ login_form.password.html_name }}" id="inputPassword" class="form-control" placeholder="Password" required>
+      {{ login_form.password.errors }}
+      <label for="{{ form.password.id_for_label }}" class="sr-only">Password</label>
+      <input type="password" name="{{ login_form.password.html_name }}" id="inputPassword" class="form-control"
+        placeholder="Password" required>
     </div>
 
     <button class="btn btn-lg btn-primary btn-block mt-2" type="submit">Login</button>

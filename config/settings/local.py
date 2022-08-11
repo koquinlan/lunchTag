@@ -10,7 +10,7 @@ DEBUG = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "Vsfeed_local",
+        "NAME": "lunch_tag_local",
         "USER": "postgres",
         "PASSWORD": get_env_variable("POSTGRES_PW"),
         "HOST": "127.0.0.1",

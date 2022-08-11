@@ -35,7 +35,6 @@ def get_env_variable(var_name):
 
 
 SECRET_KEY = get_env_variable("LUNCH_TAG_SECRET_KEY")
-print(SECRET_KEY)
 
 MESSAGE_TAGS = {
     messages.DEBUG: "alert-secondary",
@@ -65,8 +64,6 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.orcid",
     "allauth.socialaccount.providers.twitter",
-    # django bootstrap-v5
-    "bootstrap5",
     # cloudinary
     "cloudinary",
 ]
