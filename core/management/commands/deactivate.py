@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from core.models import Profile, Pairing
 
 
-class DeactivateUsers(BaseCommand):
+class Command(BaseCommand):
     help = "Sets all users to deactivated - useful for end of a semester"
 
     # define logic of command
