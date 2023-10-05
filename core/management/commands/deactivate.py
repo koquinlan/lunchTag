@@ -8,7 +8,7 @@ class Command(BaseCommand):
     # define logic of command
     def handle(self, *args, **options):
         for profile in Profile.objects.all():
-            profile.active = True
+            profile.active = False
             profile.crush = None
             profile.has_tag_pairing = False
             profile.tag_pairing = None
