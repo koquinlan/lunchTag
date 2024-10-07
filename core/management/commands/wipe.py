@@ -24,5 +24,7 @@ class Command(BaseCommand):
         for edge in Edge.objects.all():
             edge.active = True
             edge.weight = 100.0
+
+            edge.save()
         
         Pairing.objects.all().delete()
