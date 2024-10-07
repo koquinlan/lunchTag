@@ -7,10 +7,13 @@ class Command(BaseCommand):
 
     # define logic of command
     def handle(self, *args, **options):
+        tot = 0
         numActive = 0
 
         for profile in Profile.objects.all():
-            if profile.active == False:
+            tot += 1
+            if profile.active == True:
                 numActive += 1
 
         print("Number of active users: " + str(numActive))
+        print("Total users: " + str(tot))
