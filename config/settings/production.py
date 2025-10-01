@@ -33,3 +33,18 @@ CLOUDINARY_STORAGE = {
     "API_SECRET": get_env_variable("API_SECRET"),
 }
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+# Production email configuration for Heroku + SendGrid
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'  # SendGrid uses 'apikey' as username
+EMAIL_HOST_PASSWORD = get_env_variable("SENDGRID_API_KEY")  # Set by Heroku SendGrid addon
+
+# Alternative: If you want to use Gmail instead of SendGrid
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = get_env_variable("GMAIL_USER")  # Your Gmail address
+# EMAIL_HOST_PASSWORD = get_env_variable("GMAIL_APP_PASSWORD")  # Gmail app password
